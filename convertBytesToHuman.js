@@ -4,19 +4,30 @@
  * аргумент `bytes` только числового типа.
  * На выходе функция должна отдать
  * человекопонятную строку, которая будет
- * отражать размер файла. Округление, максимум,
- * до 2 знаков после запятой, исключая нули.
- *  Примеры использования:
+ * отражать размер файла. Примеры использования:
  * `convertBytesToHuman(1024) === '1 KB';`
  * `convertBytesToHuman(123123123) === '117.42 MB';`
- * `convertBytesToHuman(1610612736) === '1.5 GB';`
  * Необходимо предусмотреть защиту от
  * передачи аргументов неправильного типа
- * и класса (например, отрицательные числа).
- * В случае передачи неподходящего аргумента,
- * функция должна вернуть false.
+ * и класса (например, отрицательные числа)
  */
 
 export default function convertBytesToHuman(bytes) {
-  // your solution goes here
+  if (bytes<0 || typeof bytes !== 'number'){
+    return false;
+  }
+  const unitsOfMeasurement = ['B', 'KB', 'MB','GB']; // максимальная единица измерегиня будет Гигабайт
+  let size = bytes;
+  let index = 0;
+  while (size >= 1024 && index < unitsOfMeasurement.length - 1){
+    size /= 1024;
+    index += 1;
+  }
+  if (Number.isInteger(size)) {
+    return `${Math.floor(size)} ${unitsOfMeasurement[index]}`;
+  } 
+  else {
+    return `${size.toFixed(2)}`.replace(/\.?0+$/, '') + ' ' + `${unitsOfMeasurement[index]}`; // убираем лишний 0 после запятой
+  }
+  
 }
