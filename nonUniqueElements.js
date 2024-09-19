@@ -27,15 +27,14 @@ nonUniqueElements([10, 9, 10, 10, 9, 8]) == [10, 9, 10, 10, 9]
 export function nonUniqueElements(data) {
   const countMap = {};
 
-  data.forEach(
-    function(item){
-      if (countMap[item]) {
-        countMap[item]++;
-      } else {
-        countMap[item] = 1;
-      }
+  data.forEach(function (item) {
+    if (countMap[item]) {
+      countMap[item]++;
+    } else {
+      countMap[item] = 1;
     }
-  )
-  
-  return data.filter(item => countMap[item] > 1); // Фильтруем элементы, которые встречаются более одного раза
+  });
+
+  return data.filter((item) => countMap[item] > 1); // Фильтруем элементы, которые встречаются более одного раза
 }
+

@@ -6,3 +6,4 @@ test("returns correct sentence", () => {
   expect(correctSentence("Greetings, friends.")).toBe("Greetings, friends.");
   expect(correctSentence(123211)).toBe(false);
 });
+

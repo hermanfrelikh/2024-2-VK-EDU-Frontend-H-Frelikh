@@ -30,3 +30,4 @@ export function correctSentence(text) {
     return correctedSentence + ".";
   }
 }
+
