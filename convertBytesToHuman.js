@@ -12,8 +12,8 @@
  * и класса (например, отрицательные числа)
  */
 
-export default function convertBytesToHuman(bytes) {
-  if (bytes<0 || typeof bytes !== 'number'){
+export function convertBytesToHuman(bytes) {
+  if (bytes<0 || !Number.isFinite(bytes)){
     return false;
   }
   const unitsOfMeasurement = ['B', 'KB', 'MB','GB']; // максимальная единица измерегиня будет Гигабайт
