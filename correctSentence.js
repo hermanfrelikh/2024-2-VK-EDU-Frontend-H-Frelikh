@@ -18,12 +18,15 @@ correctSentence("Greetings, friends.") == "Greetings, friends."
  */
 
 export function correctSentence(text) {
-  let correctedSentence = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
-  if (correctedSentence.charAt(correctedSentence.length - 1 )==="."){
+  if (typeof text !== "string") {
+    return false;
+  }
+  let correctedSentence =
+    text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+
+  if (correctedSentence.charAt(correctedSentence.length - 1) === ".") {
     return correctedSentence;
+  } else {
+    return correctedSentence + ".";
   }
-  else{
-    return correctedSentence + '.';
-  }
-  
 }
