@@ -24,7 +24,7 @@ export function convertBytesToHuman(bytes) {
     index += 1;
   }
   if (Number.isInteger(size)) {
-    return `${Math.floor(size)} ${unitsOfMeasurement[index]}`;
+    return `${size} ${unitsOfMeasurement[index]}`;
   } else {
     return (
       `${size.toFixed(2)}`.replace(/\.?0+$/, "") +
