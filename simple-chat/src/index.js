@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
   const input = document.querySelector(".form-input");
   const messagesContainer = document.querySelector(".messages");
-  const clearStorageButton = document.querySelector("#clearStorage");
+  // const clearStorageButton = document.querySelector("#clearStorage");
   const sendButton = document.querySelector(".sendButton");
 
   form.addEventListener("submit", handleSubmit);
   form.addEventListener("keypress", handleKeyPress);
-  clearStorageButton.addEventListener("click", clearStorage);
+  // clearStorageButton.addEventListener("click", clearStorage);
   sendButton.addEventListener("click", handleSubmit);
 
   function handleSubmit(event) {
@@ -61,10 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function clearStorage() {
-    localStorage.clear();
-    messagesContainer.innerHTML = "";
-  }
+  // function clearStorage() {
+  //   localStorage.clear();
+  //   messagesContainer.innerHTML = "";
+  // }
 
   loadMessages();
 });
