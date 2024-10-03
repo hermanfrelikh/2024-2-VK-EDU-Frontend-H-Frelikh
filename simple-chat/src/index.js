@@ -5,6 +5,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.querySelector(".form-input");
   const messagesContainer = document.querySelector(".messages");
   const sendButton = document.querySelector(".sendButton");
+  const syncIcon = document.querySelector('.headerIconsRight .material-symbols-outlined.icon:nth-child(1)');
+  const personName = document.querySelector(".personName");
+  const personPhoto = document.querySelector(".personPhoto");
+  const personStatus = document.querySelector(".personStatus");
+
+  const users = [
+    {
+      name: "Яна",
+      avatar: "https://sun9-44.userapi.com/impg/Fmp3R9zTLJnkrYrJgRPPq8IfQ2tClWKByoHv9w/Lj9oGtVjToE.jpg?size=1080x1440&quality=95&sign=7019cbcdb9a7e615206611f82c34838a&type=album",
+      status: "недавно",
+      messageClass: "message-self"
+    },
+    {
+      name: "Герман",
+      avatar: "https://sun1-24.userapi.com/impg/7rPDGVoAQDvDZ55XLQ8fvqPoXagiitcUTDu4Hg/MiqLb9edxMU.jpg?size=2560x2560&quality=95&sign=b7abba0e9f3dadc571504bdff665cf4f&type=album", 
+      status: "онлайн",
+      messageClass: "message-other"
+    }
+  ];
+
+  let currentUserIndex = 0;
+
+  function switchUser() {
+    currentUserIndex = (currentUserIndex + 1) % users.length;
+    const currentUser = users[currentUserIndex];
+    personName.textContent = currentUser.name;
+    personPhoto.src = currentUser.avatar;
+    personStatus.textContent = currentUser.status;
+    updateMessages();
+  }
+
+  function updateMessages() {
+    const messages = messagesContainer.children;
+    for (let i = 0; i < messages.length; i++) {
+      const message = messages[i];
+      const isSelf = message.getAttribute('data-self') === 'true';
+      message.classList.remove('message', 'self', 'other');
+      message.classList.add(users[isSelf ? 0 : 1].messageClass);
+    }
+  }
+
+  syncIcon.addEventListener('click', switchUser);
 
   form.addEventListener("submit", handleSubmit);
   form.addEventListener("keypress", handleKeyPress);
@@ -21,10 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
         time: new Date()
           .toLocaleTimeString()
           .slice(0, new Date().toLocaleTimeString().length - 3),
+        self: currentUserIndex === 0
       };
       saveMessage(message);
       displayMessage(message);
       input.value = "";
+      scrollToBottom(); 
     }
   }
 
@@ -42,8 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function displayMessage(message) {
     const messageElement = document.createElement("div");
-    messageElement.classList.add("message");
+    messageElement.classList.add("message", users[message.self ? 0 : 1].messageClass);
     messageElement.setAttribute("data-id", message.id);
+    messageElement.setAttribute("data-self", message.self);
     messageElement.innerHTML = `
       <p class="message-text">${message.text}</p>
       <p class="message-time">${message.time}</p>
@@ -58,6 +103,11 @@ document.addEventListener("DOMContentLoaded", () => {
         displayMessage(message);
       }
     });
+    scrollToBottom();
+  }
+
+  function scrollToBottom() {
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
 
   loadMessages();
