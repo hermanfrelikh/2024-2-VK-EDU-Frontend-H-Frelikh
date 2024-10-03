@@ -10,6 +10,14 @@
   box-sizing: inherit;
 }
 
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 header {
   background-color: #141214;
   height: 150px;
@@ -18,8 +26,13 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
-.headerСontainer {
+
+.headerContainer {
   width: 33.3%;
 }
 
@@ -31,6 +44,7 @@ header {
   font-size: 30px;
   margin: 30px;
 }
+
 .headerIconsRight {
   width: 100%;
   display: flex;
@@ -43,12 +57,14 @@ header {
   justify-content: center;
   align-items: center;
 }
+
 .personPhoto {
   width: 100px;
   height: 100px;
   object-fit: cover;
   border-radius: 100%;
 }
+
 .personNameStatus {
   margin-left: 25px;
   display: flex;
@@ -57,14 +73,17 @@ header {
   align-items: center;
   width: 50px;
 }
+
 .personName {
   font-size: 24px;
 }
+
 .personStatus {
   font-size: 16px;
   color: #8f8b8f;
   margin-top: 8px;
 }
+
 body {
   margin: 0;
   background-color: white;
@@ -75,54 +94,52 @@ body {
   line-height: 20px;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 150px; 
+  padding-bottom: 60px; 
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto; 
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  max-height: 730px; 
+}
+
 .form {
   display: flex;
   width: 100%;
   align-items: center;
-  border: 1px black solid;
+  padding: 10px;
+  background-color: #f0f0f0;
+  position: fixed;
   bottom: 0;
-  justify-content: space-between;
-}
-.messages {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-right: 1%;
-  margin-bottom: 10px;
+  z-index: 1000;
 }
 
-.message {
-  color: white;
-  background-color: #141214;
-  border-radius: 20px;
-  margin: 10px 0 0 10px;
-  padding: 5px 15px;
-  display: inline-block;
-  font-size: 14px;
+.form-input {
+  flex: 1;
+  background-color: #f0f0f0;
+  color: #000;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  margin-right: 10px;
 }
 
-.message-time {
-  color: #8f8b8f;
-  font-size: 10px;
-  display: flex;
-  justify-content: flex-start;
-}
-.form-input-button {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  border: 1px red solid;
-  bottom: 0;
-  justify-content: space-between;
-}
-input[type="submit"] {
-  visibility: collapse;
-}
-
-input {
-  border: 0;
+.form-input:focus {
+  border-color: #000;
   outline: none;
 }
+
 .sendButton {
   background-color: #000;
   color: #fff;
@@ -133,25 +150,42 @@ input {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  height: 15px;
-  margin-right: 10%;
+  
 }
 
-.form-input {
-  background-color: #f0f0f0;
-  color: #000;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
-  margin: 30px;
-  width: 70%;
+.message-self {
+  color: white;
+  background-color: #141214;
+  border-radius: 20px;
+  border: 1px solid black;
+  margin: 5px 0;
+  padding: 9px;
+  max-width: 30%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: inline-block;
+  align-self: flex-start;
 }
 
-.form-input:focus {
-  border-color: #000;
-  outline: none;
+.message-other {
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid black;
+  margin: 5px 0;
+  padding: 9px;
+  max-width: 30%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: inline-block;
+  align-self: flex-end;
+}
+
+.message-time {
+  color: #8f8b8f;
+  font-size: 10px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 
