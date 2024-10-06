@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Герман",
-      avatar: "https://sun1-24.userapi.com/impg/7rPDGVoAQDvDZ55XLQ8fvqPoXagiitcUTDu4Hg/MiqLb9edxMU.jpg?size=2560x2560&quality=95&sign=b7abba0e9f3dadc571504bdff665cf4f&type=album", 
+      avatar: "https://sun1-24.userapi.com/impg/7rPDGVoAQDvDZ55XLQ8fvqPoXagiitcUTDu4Hg/MiqLb9edxMU.jpg?size=2560x2560&quality=95&sign=b7abba0e9f3dadc571504bdff665cf4f&type=album",
       status: "онлайн",
       messageClass: "message-other"
     }
@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < messages.length; i++) {
       const message = messages[i];
       const isSelf = message.getAttribute('data-self') === 'true';
-      message.classList.remove('message', 'self', 'other');
-      message.classList.add(users[isSelf ? 0 : 1].messageClass);
+      message.classList.remove('message-self', 'message-other');
+      message.classList.add(isSelf ? users[currentUserIndex].messageClass : users[1 - currentUserIndex].messageClass);
     }
   }
 
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
       saveMessage(message);
       displayMessage(message);
       input.value = "";
-      scrollToBottom(); 
+      scrollToBottom();
     }
   }
 
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function displayMessage(message) {
     const messageElement = document.createElement("div");
-    messageElement.classList.add("message", users[message.self ? 0 : 1].messageClass);
+    messageElement.classList.add("message", users[message.self ? currentUserIndex : 1 - currentUserIndex].messageClass);
     messageElement.setAttribute("data-id", message.id);
     messageElement.setAttribute("data-self", message.self);
     messageElement.innerHTML = `
