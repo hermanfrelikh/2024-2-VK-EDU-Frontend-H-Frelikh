@@ -1,0 +1,20 @@
+.chatPerson{
+    border: 1px solid black;
+    color:black;
+    margin-top: 20px;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.chat-item-photo{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.chat-item-info{
+    color: white;
+}
+a{
+    text-decoration: none;
+}
