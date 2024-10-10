@@ -1,5 +1,6 @@
 import "./Header.css";
 
+
 export function Header() {
   return `
     <header class="header">
@@ -11,8 +12,7 @@ export function Header() {
       </div>
       <div class="headerContainer">
         <div class="headerIconsRight">
-            
-            <span class="material-symbols-outlined icon">search</span>
+
             <input
                 class="search-input"
                 name="message-text"
@@ -20,6 +20,9 @@ export function Header() {
                 type="text"
                 autocomplete="off"
             />
+            <button class="icon-button-search">
+              <span class="material-symbols-outlined icon">search</span>
+            </button>
         </div>
       </div>
     </header>

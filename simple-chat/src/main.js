@@ -8,6 +8,46 @@ document.addEventListener("DOMContentLoaded", () => {
   const headerContainers = document.getElementById("header-container");
   headerContainers.innerHTML = Header();
 
+  const searchInput = document.querySelector(".search-input");
+  searchInput.style.display = "none";
+
+  const users = getUsers();
+
+  const searchButton = document.querySelector(".icon-button-search");
+  searchButton.addEventListener("click", () => {
+    searchInput.style.display =
+      searchInput.style.display === "none" ? "block" : "none";
+  });
+
+  searchInput.addEventListener("input", (event) => {
+    const word = event.target.value;
+    const filteredUsers = searchFunction(word, users);
+    loadChatList(filteredUsers);
+  });
+
+  function searchFunction(word, users) {
+    return users.filter((s) => {
+      const regex = new RegExp(word, "gi");
+      return s.name.match(regex);
+    });
+  }
+
+  let stateSearchButton = 1;
+  if (searchButton) {
+    searchButton.addEventListener("click", clickSearchButton);
+  }
+
+  function clickSearchButton(event) {
+    event.preventDefault();
+    if (stateSearchButton === 1) {
+      searchInput.style.display = "block";
+      stateSearchButton = -stateSearchButton;
+    } else {
+      searchInput.style.display = "none";
+      stateSearchButton = -stateSearchButton;
+    }
+  }
+
   const createChat = document.getElementById("create-chat");
   createChat.innerHTML = CreateChat();
 
@@ -85,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
               saveUsers(users);
               const newUserId = users.length;
               window.location.href = `index.html?chatId=${newUserId}`;
-            } 
+            }
           }
         }
       }
@@ -99,18 +139,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const chatList = document.getElementById("chat-list");
 
-  const reversedUsers = [...users].reverse();
-  reversedUsers.forEach((user) => {
-    chatList.innerHTML += Chat(user);
-  });
+  function loadChatList(filteredUsers = users) {
+    chatList.innerHTML = ""; 
+    const reversedUsers = [...filteredUsers].reverse();
+    reversedUsers.forEach((user) => {
+      chatList.innerHTML += Chat(user);
+    });
 
-  chatList.addEventListener("click", (event) => {
-    if (event.target.tagName === "A") {
-      event.preventDefault();
-      const chatId = event.target.getAttribute("href").split("=")[1];
-      window.location.href = `index.html?chatId=${chatId}`;
-    }
-  });
+    chatList.addEventListener("click", (event) => {
+      if (event.target.tagName === "A") {
+        event.preventDefault();
+        const chatId = event.target.getAttribute("href").split("=")[1];
+        window.location.href = `index.html?chatId=${chatId}`;
+      }
+    });
+  }
+
+  loadChatList();
   function scrollChatList() {
     chatList.scrollTop = 0;
   }
