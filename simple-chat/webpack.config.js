@@ -65,7 +65,6 @@ module.exports = {
         static: BUILD_PATH,
         compress: true,
         port: 9000,
-        open: true,
         open: 'main.html',
     }
     
