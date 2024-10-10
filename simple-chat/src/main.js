@@ -2,16 +2,19 @@ import "./main.css";
 import { Header } from "./components/Header.js";
 import { CreateChat } from "./components/CreateChat.js";
 import { Chat } from "./components/Chat.js";
-import { users, getUsers, saveUsers } from "./index.js";
+import { getUsers, saveUsers } from "./index.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (window.location.pathname === "/") {
+    window.location.href = "main.html";
+  }
   const headerContainers = document.getElementById("header-container");
   headerContainers.innerHTML = Header();
 
   const searchInput = document.querySelector(".search-input");
   searchInput.style.display = "none";
 
-  const users = getUsers();
+  let users = getUsers();
 
   const searchButton = document.querySelector(".icon-button-search");
   searchButton.addEventListener("click", () => {
@@ -121,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 avatar:
                   "https://www.meme-arsenal.com/memes/4d37481e72c4770f4be10d89dbf0b2a8.jpg",
                 status: "недавно",
+                lastMessage: "Нет сообщений",
               });
               saveUsers(users);
               const newUserId = users.length;
@@ -140,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatList = document.getElementById("chat-list");
 
   function loadChatList(filteredUsers = users) {
-    chatList.innerHTML = ""; 
+    chatList.innerHTML = "";
     const reversedUsers = [...filteredUsers].reverse();
     reversedUsers.forEach((user) => {
       chatList.innerHTML += Chat(user);
@@ -160,4 +164,5 @@ document.addEventListener("DOMContentLoaded", () => {
     chatList.scrollTop = 0;
   }
   scrollChatList();
+  console.log(users);
 });

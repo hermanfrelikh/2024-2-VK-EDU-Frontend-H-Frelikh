@@ -9,7 +9,8 @@ export function Chat(user) {
             <div class="chat-item-info">
               <h2 class="chat-item-name">${user.name}</h2>
               <p class="chat-item-status">${user.status}</p>
-              
+              <p class="last-message">${user.lastMessage || "Нет сообщений"}</p>
+              <span class="material-symbols-outlined icon">done_all</span>
             </div>
           </div>
         </a>
