@@ -19,9 +19,14 @@
 }
 .icon-button-create:hover{
   background-color: #4169E1;
+  color: white;
 }
 .icon-button-create:active{
   transform: scale(0.9);
+}
+
+#iconCreate:hover{
+  color: white;
 }
 #iconHeader {
   display: flex;

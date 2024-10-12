@@ -2,7 +2,9 @@ import "./main.css";
 import { Header } from "./components/Header.js";
 import { CreateChat } from "./components/CreateChat.js";
 import { Chat } from "./components/Chat.js";
+import { ChatListComp } from "./components/ChatListComp.js";
 import { getUsers, saveUsers } from "./index.js";
+
 
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname === "/") {
@@ -10,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   const headerContainers = document.getElementById("header-container");
   headerContainers.innerHTML = Header();
+
+  const chatListComponent = document.getElementById("chat-list-comp");
+  chatListComponent.innerHTML = ChatListComp();
 
   const searchInput = document.querySelector(".search-input");
   searchInput.style.display = "none";

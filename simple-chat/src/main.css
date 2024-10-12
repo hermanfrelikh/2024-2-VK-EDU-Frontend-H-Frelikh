@@ -3,13 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
-
 body,
 html {
   margin: 0;
@@ -21,24 +19,13 @@ html {
 body {
   background-color: white;
 }
-#chat-list {
-  margin-top: 150px;
-  list-style-type: none;
-  overflow-y: auto;
-  height: 800px;
-  padding-bottom: 20px;
-}
-.chatPerson {
-  background-color: #141214;
-  border-radius: 20px;
-}
 .create-new-chat-form {
   align-items: end;
   height: 280px;
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: auto; 
+  margin-top: auto;
 }
 .create-new-chat {
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
@@ -52,9 +39,9 @@ body {
   z-index: 1100;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 10px;
-  display: flex; 
-  flex-direction: column; 
-  justify-content: space-between; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 #form-input-name {
   flex: 1;
@@ -73,7 +60,7 @@ body {
   background-color: #000;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 8px 20px;
   border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
@@ -82,7 +69,14 @@ body {
   height: 30px;
   box-sizing: border-box;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
+}
+#cancellation-create-new-chat:hover{
+  color: #8f8b8f;
+}
+#cancellation-create-new-chat:active{
+  color: white;
+  transform: scale(0.9);
 }
 .new-user-info {
   display: flex;
@@ -97,16 +91,15 @@ body {
   margin-left: 20px;
   align-self: center;
 }
-
 @media (min-width: 600px) and (max-width: 900px) {
   #chat-list {
     margin-top: 150px;
     height: 800px;
   }
-  .create-new-chat{
+  .create-new-chat {
     height: 300px;
     width: 70%;
-    left:15%;
+    left: 15%;
   }
 }
 @media (min-width: 400px) and (max-width: 600px) {
@@ -114,39 +107,42 @@ body {
     margin-top: 100px;
     height: 900px;
   }
-  .create-new-chat{
+  .create-new-chat {
     height: 400px;
     width: 70%;
-    left:15%;
+    left: 15%;
   }
-  .add-new-user-title{
+  .add-new-user-title {
     font-size: 20px;
   }
-  #form-input-name{
+  #form-input-name {
     font-size: 10px;
   }
-  #cancellation-create-new-chat{
+  #cancellation-create-new-chat {
     font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media (max-width: 400px) {
   #chat-list {
     margin-top: 80px;
     height: 1000px;
-  }\#form-input-name{
+  }
+  #form-input-name {
     font-size: 10px;
   }
-  #cancellation-create-new-chat{
+  #cancellation-create-new-chat {
     font-size: 10px;
   }
-  #form-input-name{
+  #form-input-name {
     font-size: 10px;
   }
-  #cancellation-create-new-chat{
+  #cancellation-create-new-chat {
     font-size: 10px;
-    
   }
-  .add-new-user-title{
+  .add-new-user-title {
     font-size: 20px;
   }
 }

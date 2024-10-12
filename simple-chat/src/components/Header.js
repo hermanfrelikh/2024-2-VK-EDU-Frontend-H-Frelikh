@@ -5,7 +5,7 @@ export function Header() {
   return `
     <header class="header">
       <div class="headerContainer">
-        <span class="material-symbols-outlined icon">menu</span>
+        <span id="icon-burger-menu" class="material-symbols-outlined icon">menu</span>
       </div>
       <div class="headerContainer">
         <h1>Messenger</h1>

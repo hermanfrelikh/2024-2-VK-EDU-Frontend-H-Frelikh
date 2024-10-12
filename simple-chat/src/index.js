@@ -50,13 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const headerContainersIndex = document.getElementById("header-container-index");
   if (headerContainersIndex) {
     headerContainersIndex.innerHTML = HeaderIndex();
-  } 
+  }
 
   const formIndex = document.getElementById("form-index");
   if (formIndex) {
     formIndex.innerHTML = FormIndex();
-  } 
-  
+  }
+
   const form = document.querySelector("form");
   const input = document.querySelector(".form-input");
   const messagesContainer = document.querySelector(".messages");
@@ -109,13 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const messages1 =
       JSON.parse(localStorage.getItem(`messages_${currentUserOther.id}`)) || [];
     for (let i = 0; i < messages1.length; i++) {
-      const message = messages1[i];
-      message.self = !message.self;
-      if (message.classList.contains("message-self")) {
-        message.classList.replace("message-self", "message-other");
-      } else {
-        message.classList.replace("message-other", "message-self");
-      }
+      messages1[i].self = !messages1[i].self;
     }
     localStorage.setItem(
       `messages_${currentUserOther.id}`,
@@ -126,19 +120,15 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.getItem(`messages_german_${currentUserOther.id}`)
       ) || [];
     for (let i = 0; i < messages2.length; i++) {
-      const message = messages2[i];
-      message.self = !message.self;
-      if (message.classList.contains("message-self")) {
-        message.classList.replace("message-self", "message-other");
-      } else {
-        message.classList.replace("message-other", "message-self");
-      }
+      messages2[i].self = !messages2[i].self;
     }
     localStorage.setItem(
       `messages_german_${currentUserOther.id}`,
       JSON.stringify(messages2)
     );
+    loadMessages();
   }
+
   if (form) {
     form.addEventListener("submit", handleSubmit);
     form.addEventListener("keypress", handleKeyPress);
@@ -206,10 +196,11 @@ document.addEventListener("DOMContentLoaded", () => {
     messageElement.setAttribute("data-user-id", currentUser.id);
     messageElement.innerHTML = `
       <p class="message-text">${message.text}</p>
+      <span id="done-all-chat" class="material-symbols-outlined icon">done_all</span>
       <p class="message-time">${message.time}</p>
+      
     `;
     messagesContainer.appendChild(messageElement);
-
   }
 
   function loadMessages() {
@@ -219,17 +210,15 @@ document.addEventListener("DOMContentLoaded", () => {
       messages.forEach((message) => {
         if (!document.querySelector(`[data-id="${message.id}"]`)) {
           displayMessage(message);
-    
         }
       });
       const messagesOther =
         JSON.parse(localStorage.getItem(`messages_german_${currentUser.id}`)) ||
         [];
-     
+
       messagesOther.forEach((message) => {
         if (!document.querySelector(`[data-id="${message.id}"]`)) {
           displayMessage(message);
-        
         }
       });
       scrollToBottom();

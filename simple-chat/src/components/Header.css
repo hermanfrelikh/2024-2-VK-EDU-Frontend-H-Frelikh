@@ -31,6 +31,16 @@ header {
 .icon {
   font-size: 30px;
   margin: 30px 10px 30px 30px;
+
+}
+
+#icon-burger-menu:hover{
+  color: #8f8b8f;
+  
+}
+#icon-burger-menu:active{
+  color: white;
+  transform: scale(0.9);
 }
 .icon-button-search {
   background: none;
@@ -38,8 +48,16 @@ header {
   padding: 0;
   cursor: pointer;
   color: white;
+  transition-duration: color;
 }
-
+.icon-button-search:hover{
+  color: #8f8b8f;
+  
+}
+.icon-button-search:active{
+  color: white;
+  transform: scale(0.9);
+}
 h1 {
   display: flex;
   justify-content: center;

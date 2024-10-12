@@ -3,13 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
-
 body,
 html {
   margin: 0;
@@ -18,7 +16,6 @@ html {
   display: flex;
   flex-direction: column;
 }
-
 body {
   margin: 0;
   background-color: white;
@@ -28,7 +25,6 @@ body {
   font-weight: 400;
   line-height: 20px;
 }
-
 main {
   display: flex;
   flex-direction: column;
@@ -36,7 +32,6 @@ main {
   padding-top: 150px;
   padding-bottom: 60px;
 }
-
 .messages {
   flex: 1;
   overflow-y: auto;
@@ -44,49 +39,7 @@ main {
   display: flex;
   flex-direction: column;
   max-height: 730px;
-
 }
-
-.form {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  padding: 10px;
-  background-color: #f0f0f0;
-  position: fixed;
-  bottom: 0;
-  z-index: 1000;
-}
-
-.form-input {
-  flex: 1;
-  background-color: #f0f0f0;
-  color: #000;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
-  margin-right: 10px;
-}
-
-.form-input:focus {
-  border-color: #000;
-  outline: none;
-}
-
-.sendButton {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
 .message-self {
   color: white;
   background-color: #141214;
@@ -100,7 +53,6 @@ main {
   display: inline-block;
   align-self: flex-start;
 }
-
 .message-other {
   color: black;
   background-color: white;
@@ -114,31 +66,27 @@ main {
   display: inline-block;
   align-self: flex-end;
 }
-
 .message-time {
   color: #8f8b8f;
   font-size: 10px;
   display: flex;
   justify-content: flex-start;
 }
-
-
+#done-all-chat{
+    color:white;
+}
 @media (max-width: 900px) {
-  
 }
 @media (max-width: 600px) {
   .messages{
     margin-top: -55px;
     max-height: 785px;
   }
-
 }
-
 @media (max-width: 400px) {
   .messages{
     margin-top: -70px;
     max-height: 800px;
   }
-
 }
 
