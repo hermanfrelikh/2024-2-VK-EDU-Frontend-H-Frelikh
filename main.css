@@ -3,13 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
-
 body,
 html {
   margin: 0;
@@ -21,24 +19,13 @@ html {
 body {
   background-color: white;
 }
-#chat-list {
-  margin-top: 150px;
-  list-style-type: none;
-  overflow-y: auto;
-  height: 800px;
-  padding-bottom: 20px;
-}
-.chatPerson {
-  background-color: #141214;
-  border-radius: 20px;
-}
 .create-new-chat-form {
   align-items: end;
   height: 280px;
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: auto; 
+  margin-top: auto;
 }
 .create-new-chat {
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
@@ -52,9 +39,9 @@ body {
   z-index: 1100;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 10px;
-  display: flex; 
-  flex-direction: column; 
-  justify-content: space-between; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 #form-input-name {
   flex: 1;
@@ -73,7 +60,7 @@ body {
   background-color: #000;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 8px 20px;
   border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
@@ -82,7 +69,14 @@ body {
   height: 30px;
   box-sizing: border-box;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
+}
+#cancellation-create-new-chat:hover{
+  color: #8f8b8f;
+}
+#cancellation-create-new-chat:active{
+  color: white;
+  transform: scale(0.9);
 }
 .new-user-info {
   display: flex;
@@ -97,16 +91,15 @@ body {
   margin-left: 20px;
   align-self: center;
 }
-
 @media (min-width: 600px) and (max-width: 900px) {
   #chat-list {
     margin-top: 150px;
     height: 800px;
   }
-  .create-new-chat{
+  .create-new-chat {
     height: 300px;
     width: 70%;
-    left:15%;
+    left: 15%;
   }
 }
 @media (min-width: 400px) and (max-width: 600px) {
@@ -114,39 +107,42 @@ body {
     margin-top: 100px;
     height: 900px;
   }
-  .create-new-chat{
+  .create-new-chat {
     height: 400px;
     width: 70%;
-    left:15%;
+    left: 15%;
   }
-  .add-new-user-title{
+  .add-new-user-title {
     font-size: 20px;
   }
-  #form-input-name{
+  #form-input-name {
     font-size: 10px;
   }
-  #cancellation-create-new-chat{
+  #cancellation-create-new-chat {
     font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media (max-width: 400px) {
   #chat-list {
     margin-top: 80px;
     height: 1000px;
-  }\#form-input-name{
+  }
+  #form-input-name {
     font-size: 10px;
   }
-  #cancellation-create-new-chat{
+  #cancellation-create-new-chat {
     font-size: 10px;
   }
-  #form-input-name{
+  #form-input-name {
     font-size: 10px;
   }
-  #cancellation-create-new-chat{
+  #cancellation-create-new-chat {
     font-size: 10px;
-    
   }
-  .add-new-user-title{
+  .add-new-user-title {
     font-size: 20px;
   }
 }
@@ -184,6 +180,16 @@ header {
 .icon {
   font-size: 30px;
   margin: 30px 10px 30px 30px;
+
+}
+
+#icon-burger-menu:hover{
+  color: #8f8b8f;
+  
+}
+#icon-burger-menu:active{
+  color: white;
+  transform: scale(0.9);
 }
 .icon-button-search {
   background: none;
@@ -191,8 +197,16 @@ header {
   padding: 0;
   cursor: pointer;
   color: white;
+  transition-duration: color;
 }
-
+.icon-button-search:hover{
+  color: #8f8b8f;
+  
+}
+.icon-button-search:active{
+  color: white;
+  transform: scale(0.9);
+}
 h1 {
   display: flex;
   justify-content: center;
@@ -228,9 +242,14 @@ h1 {
 }
 .icon-button-create:hover{
   background-color: #4169E1;
+  color: white;
 }
 .icon-button-create:active{
   transform: scale(0.9);
+}
+
+#iconCreate:hover{
+  color: white;
 }
 #iconHeader {
   display: flex;
@@ -300,19 +319,32 @@ a{
     margin-top: 15px;
     font-size: 20px;
     margin-left: 5px;
+    color:red;
 }
+#done-all-chat{
+    
+}
+#chat-list {
+    margin-top: 150px;
+    list-style-type: none;
+    overflow-y: auto;
+    height: 800px;
+    padding-bottom: 20px;
+  }
+  .chatPerson {
+    background-color: #141214;
+    border-radius: 20px;
+  }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
-
 body,
 html {
   margin: 0;
@@ -321,7 +353,6 @@ html {
   display: flex;
   flex-direction: column;
 }
-
 body {
   margin: 0;
   background-color: white;
@@ -331,7 +362,6 @@ body {
   font-weight: 400;
   line-height: 20px;
 }
-
 main {
   display: flex;
   flex-direction: column;
@@ -339,7 +369,6 @@ main {
   padding-top: 150px;
   padding-bottom: 60px;
 }
-
 .messages {
   flex: 1;
   overflow-y: auto;
@@ -347,49 +376,7 @@ main {
   display: flex;
   flex-direction: column;
   max-height: 730px;
-
 }
-
-.form {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  padding: 10px;
-  background-color: #f0f0f0;
-  position: fixed;
-  bottom: 0;
-  z-index: 1000;
-}
-
-.form-input {
-  flex: 1;
-  background-color: #f0f0f0;
-  color: #000;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
-  margin-right: 10px;
-}
-
-.form-input:focus {
-  border-color: #000;
-  outline: none;
-}
-
-.sendButton {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
 .message-self {
   color: white;
   background-color: #141214;
@@ -403,7 +390,6 @@ main {
   display: inline-block;
   align-self: flex-start;
 }
-
 .message-other {
   color: black;
   background-color: white;
@@ -417,32 +403,28 @@ main {
   display: inline-block;
   align-self: flex-end;
 }
-
 .message-time {
   color: #8f8b8f;
   font-size: 10px;
   display: flex;
   justify-content: flex-start;
 }
-
-
+#done-all-chat{
+    color:white;
+}
 @media (max-width: 900px) {
-  
 }
 @media (max-width: 600px) {
   .messages{
     margin-top: -55px;
     max-height: 785px;
   }
-
 }
-
 @media (max-width: 400px) {
   .messages{
     margin-top: -70px;
     max-height: 800px;
   }
-
 }
 
 
@@ -473,6 +455,14 @@ header {
 .icon {
   font-size: 30px;
   margin: 30px;
+}
+.icon:hover{
+  color: #8f8b8f;
+  
+}
+.icon:active{
+  color: white;
+  transform: scale(0.9);
 }
 .icon-button {
   background: none;
@@ -575,6 +565,7 @@ header {
   .icon {
     margin: 5px;
   }
+  
   .personNameStatus {
     margin-left: 10px;
   }
@@ -584,4 +575,46 @@ header {
 }
 
 
-
+.form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+  }
+  .form-input {
+    flex: 1;
+    background-color: #f0f0f0;
+    color: #000;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    margin-right: 10px;
+  }
+  .form-input:focus {
+    border-color: #000;
+    outline: none;
+  }
+  .sendButton {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .sendButton:hover{
+    color: #8f8b8f;
+  }
+  .sendButton:active{
+    color: white;
+    transform: scale(0.9);
+  }
