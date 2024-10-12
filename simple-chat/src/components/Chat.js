@@ -7,10 +7,14 @@ export function Chat(user) {
           <div class="chat-item">
             <img src="${user.avatar}" alt="${user.name}" class="chat-item-photo" />
             <div class="chat-item-info">
-              <h2 class="chat-item-name">${user.name}</h2>
-              <p class="chat-item-status">${user.status}</p>
-              <p class="last-message">${user.lastMessage || "Нет сообщений"}</p>
-              <span class="material-symbols-outlined icon">done_all</span>
+              <div class="chat-item-name-time">
+                <h2 class="chat-item-name">${user.name}</h2>
+                <p class="chat-item-time">${"10:00"}</p>
+              </div>
+              <div class="chat-item-last-message-span">
+                <p class="last-message">${user.lastMessage || "Нет сообщений"}</p>
+                <span id = "done-all" class="material-symbols-outlined icon">done_all</span>
+              </div>
             </div>
           </div>
         </a>

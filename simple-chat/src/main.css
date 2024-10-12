@@ -26,6 +26,7 @@ body {
   list-style-type: none;
   overflow-y: auto;
   height: 800px;
+  padding-bottom: 20px;
 }
 .chatPerson {
   background-color: #141214;
@@ -37,11 +38,12 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: auto; /* Добавляем margin-top: auto для перемещения формы вниз */
+  margin-top: auto; 
 }
 .create-new-chat {
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
   width: 50%;
+  box-sizing: border-box;
   height: 400px;
   position: absolute;
   top: 200px;
@@ -50,9 +52,9 @@ body {
   z-index: 1100;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 10px;
-  display: flex; /* Добавляем Flexbox */
-  flex-direction: column; /* Устанавливаем направление flex-контейнера в столбец */
-  justify-content: space-between; /* Распределяем элементы по вертикали */
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
 }
 #form-input-name {
   flex: 1;
@@ -78,8 +80,11 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
   height: 30px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center; 
 }
-.new-user-info{
+.new-user-info {
   display: flex;
   margin-top: 30px;
 }
@@ -88,7 +93,60 @@ body {
   height: 100px;
   border-radius: 50%;
 }
-.new-user-name-time-conteiner{
+.new-user-name-time-conteiner {
   margin-left: 20px;
   align-self: center;
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  #chat-list {
+    margin-top: 150px;
+    height: 800px;
+  }
+  .create-new-chat{
+    height: 300px;
+    width: 70%;
+    left:15%;
+  }
+}
+@media (min-width: 400px) and (max-width: 600px) {
+  #chat-list {
+    margin-top: 100px;
+    height: 900px;
+  }
+  .create-new-chat{
+    height: 400px;
+    width: 70%;
+    left:15%;
+  }
+  .add-new-user-title{
+    font-size: 20px;
+  }
+  #form-input-name{
+    font-size: 10px;
+  }
+  #cancellation-create-new-chat{
+    font-size: 10px;
+  }
+}
+@media (max-width: 400px) {
+  #chat-list {
+    margin-top: 80px;
+    height: 1000px;
+  }\#form-input-name{
+    font-size: 10px;
+  }
+  #cancellation-create-new-chat{
+    font-size: 10px;
+  }
+  #form-input-name{
+    font-size: 10px;
+  }
+  #cancellation-create-new-chat{
+    font-size: 10px;
+    
+  }
+  .add-new-user-title{
+    font-size: 20px;
+  }
 }

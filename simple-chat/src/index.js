@@ -1,4 +1,6 @@
 import "./index.css";
+import { HeaderIndex } from "./components/HeaderIndex.js";
+import { FormIndex } from "./components/FormIndex.js";
 
 function getUsers() {
   return JSON.parse(localStorage.getItem("users")) || [];
@@ -35,7 +37,6 @@ if (users.length === 0) {
       status: "2 часа назад",
       lastMessage: "последнее сообщение не очень длинное",
     },
-    
   ];
   saveUsers(users);
 }
@@ -46,6 +47,16 @@ let currentUser = null;
 let currentSenderId = null;
 
 document.addEventListener("DOMContentLoaded", () => {
+  const headerContainersIndex = document.getElementById("header-container-index");
+  if (headerContainersIndex) {
+    headerContainersIndex.innerHTML = HeaderIndex();
+  } 
+
+  const formIndex = document.getElementById("form-index");
+  if (formIndex) {
+    formIndex.innerHTML = FormIndex();
+  } 
+  
   const form = document.querySelector("form");
   const input = document.querySelector(".form-input");
   const messagesContainer = document.querySelector(".messages");
@@ -67,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   let currentUserIndex = parseInt(urlParams.get("chatId")) - 1;
   currentUser = users[currentUserIndex];
+  let currentUserOther = german;
 
   if (currentUser) {
     personName.textContent = currentUser.name;
@@ -80,10 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function switchUser() {
     if (currentUser.id === german.id) {
+      currentUserOther = currentUser;
       currentUser = users[currentUserIndex];
     } else {
+      currentUserOther = currentUser;
       currentUser = german;
     }
+
     personName.textContent = currentUser.name;
     personPhoto.src = currentUser.avatar;
     personStatus.textContent = currentUser.status;
@@ -91,16 +106,38 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateMessages() {
-    const messages = messagesContainer.children;
-    for (let i = 0; i < messages.length; i++) {
-      const message = messages[i];
-
+    const messages1 =
+      JSON.parse(localStorage.getItem(`messages_${currentUserOther.id}`)) || [];
+    for (let i = 0; i < messages1.length; i++) {
+      const message = messages1[i];
+      message.self = !message.self;
       if (message.classList.contains("message-self")) {
         message.classList.replace("message-self", "message-other");
       } else {
         message.classList.replace("message-other", "message-self");
       }
     }
+    localStorage.setItem(
+      `messages_${currentUserOther.id}`,
+      JSON.stringify(messages1)
+    );
+    const messages2 =
+      JSON.parse(
+        localStorage.getItem(`messages_german_${currentUserOther.id}`)
+      ) || [];
+    for (let i = 0; i < messages2.length; i++) {
+      const message = messages2[i];
+      message.self = !message.self;
+      if (message.classList.contains("message-self")) {
+        message.classList.replace("message-self", "message-other");
+      } else {
+        message.classList.replace("message-other", "message-self");
+      }
+    }
+    localStorage.setItem(
+      `messages_german_${currentUserOther.id}`,
+      JSON.stringify(messages2)
+    );
   }
   if (form) {
     form.addEventListener("submit", handleSubmit);
@@ -137,13 +174,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function saveMessage(message) {
-    let messages =
-      JSON.parse(localStorage.getItem(`messages_${currentUser.id}`)) || [];
-    messages.push(message);
-    localStorage.setItem(
-      `messages_${currentUser.id}`,
-      JSON.stringify(messages)
-    );
+    if (currentUser === german) {
+      let messages =
+        JSON.parse(
+          localStorage.getItem(`messages_german_${currentUserOther.id}`)
+        ) || [];
+      messages.push(message);
+      localStorage.setItem(
+        `messages_german_${currentUserOther.id}`,
+        JSON.stringify(messages)
+      );
+    } else {
+      let messages =
+        JSON.parse(localStorage.getItem(`messages_${currentUser.id}`)) || [];
+      messages.push(message);
+      localStorage.setItem(
+        `messages_${currentUser.id}`,
+        JSON.stringify(messages)
+      );
+    }
   }
 
   function displayMessage(message) {
@@ -160,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <p class="message-time">${message.time}</p>
     `;
     messagesContainer.appendChild(messageElement);
+
   }
 
   function loadMessages() {
@@ -169,6 +219,17 @@ document.addEventListener("DOMContentLoaded", () => {
       messages.forEach((message) => {
         if (!document.querySelector(`[data-id="${message.id}"]`)) {
           displayMessage(message);
+    
+        }
+      });
+      const messagesOther =
+        JSON.parse(localStorage.getItem(`messages_german_${currentUser.id}`)) ||
+        [];
+     
+      messagesOther.forEach((message) => {
+        if (!document.querySelector(`[data-id="${message.id}"]`)) {
+          displayMessage(message);
+        
         }
       });
       scrollToBottom();

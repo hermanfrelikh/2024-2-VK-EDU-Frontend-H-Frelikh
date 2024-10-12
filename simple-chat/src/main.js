@@ -56,10 +56,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   createChat.addEventListener("click", CreateNewChat);
 
+  let stateCreateChat = true;
+  let addNewChat = null;
+
   function CreateNewChat() {
-    const addNewChat = document.createElement("div");
-    addNewChat.className = "create-new-chat";
-    addNewChat.innerHTML = `
+    if (stateCreateChat === true) {
+      addNewChat = document.createElement("div");
+      addNewChat.className = "create-new-chat";
+      addNewChat.innerHTML = `
       <h1 class = "add-new-user-title">Написать сообщение</h1>
       <form class="create-new-chat-form" action="/">
         <input
@@ -72,72 +76,84 @@ document.addEventListener("DOMContentLoaded", () => {
         <button id="cancellation-create-new-chat">Отмена</button>
       </form>
     `;
-    document.body.appendChild(addNewChat);
+      document.body.appendChild(addNewChat);
 
-    const cancellationCreateNewChat = document.getElementById(
-      "cancellation-create-new-chat"
-    );
-    cancellationCreateNewChat.addEventListener(
-      "click",
-      cancellationCreateNewChatFunction
-    );
-    const formInputName = document.getElementById("form-input-name");
-    formInputName.addEventListener("input", enterUserName);
-    formInputName.addEventListener("keypress", notClose);
-    function notClose(event) {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        formInputName.value = "";
+      const cancellationCreateNewChat = document.getElementById(
+        "cancellation-create-new-chat"
+      );
+      cancellationCreateNewChat.addEventListener(
+        "click",
+        cancellationCreateNewChatFunction
+      );
+
+      const formInputName = document.getElementById("form-input-name");
+      formInputName.addEventListener("input", enterUserName);
+      formInputName.addEventListener("keypress", notClose);
+
+      function notClose(event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          formInputName.value = "";
+        }
       }
-    }
-    function enterUserName(event) {
-      const existingElement = document.querySelector(".find-new-user");
-      if (existingElement) {
-        existingElement.remove();
-      }
-      const findNewUser = document.createElement("div");
-      findNewUser.classList.add("find-new-user");
-      if (formInputName.value !== "") {
-        findNewUser.innerHTML = `
-        <div class="new-user-info">
-          <img class="new-user-avatar"
-          src="https://www.meme-arsenal.com/memes/4d37481e72c4770f4be10d89dbf0b2a8.jpg"
-          alt="avatar" />
-          <div class="new-user-name-time-conteiner">
-            <h2 class="new-user-name">${event.target.value}</h2>
-            <p class="new-user-time">недавно</p>
+
+      function enterUserName(event) {
+        const existingElement = document.querySelector(".find-new-user");
+        if (existingElement) {
+          existingElement.remove();
+        }
+        const findNewUser = document.createElement("div");
+        findNewUser.classList.add("find-new-user");
+        if (formInputName.value !== "") {
+          findNewUser.innerHTML = `
+          <div class="new-user-info">
+            <img class="new-user-avatar"
+              src="https://www.meme-arsenal.com/memes/4d37481e72c4770f4be10d89dbf0b2a8.jpg"
+              alt="avatar" />
+            <div class="new-user-name-time-conteiner">
+              <h2 class="new-user-name">${event.target.value}</h2>
+              <p class="new-user-time">недавно</p>
+            </div>
           </div>
-        </div>
         `;
-        const addNewUserTitle = document.querySelector(".add-new-user-title");
-
-        addNewUserTitle.insertAdjacentElement("afterend", findNewUser);
-        const newUser = document.querySelector(".new-user-info");
-        if (newUser) {
-          newUser.addEventListener("click", addUserObj);
-          function addUserObj() {
-            const userName = event.target.value.trim();
-            if (userName) {
-              users.push({
-                id: users.length + 1,
-                name: userName,
-                avatar:
-                  "https://www.meme-arsenal.com/memes/4d37481e72c4770f4be10d89dbf0b2a8.jpg",
-                status: "недавно",
-                lastMessage: "Нет сообщений",
-              });
-              saveUsers(users);
-              const newUserId = users.length;
-              window.location.href = `index.html?chatId=${newUserId}`;
+          const addNewUserTitle = document.querySelector(".add-new-user-title");
+          addNewUserTitle.insertAdjacentElement("afterend", findNewUser);
+          const newUser = document.querySelector(".new-user-info");
+          if (newUser) {
+            newUser.addEventListener("click", addUserObj);
+            function addUserObj() {
+              const userName = event.target.value.trim();
+              if (userName) {
+                users.push({
+                  id: users.length + 1,
+                  name: userName,
+                  avatar:
+                    "https://www.meme-arsenal.com/memes/4d37481e72c4770f4be10d89dbf0b2a8.jpg",
+                  status: "недавно",
+                  lastMessage: "Нет сообщений",
+                });
+                saveUsers(users);
+                const newUserId = users.length;
+                window.location.href = `index.html?chatId=${newUserId}`;
+              }
             }
           }
         }
       }
-    }
 
-    function cancellationCreateNewChatFunction(event) {
-      event.preventDefault();
-      document.body.removeChild(addNewChat);
+      function cancellationCreateNewChatFunction(event) {
+        event.preventDefault();
+        document.body.removeChild(addNewChat);
+        stateCreateChat = true;
+      }
+
+      stateCreateChat = false;
+    } else {
+      if (addNewChat) {
+        document.body.removeChild(addNewChat);
+        addNewChat = null;
+      }
+      stateCreateChat = true;
     }
   }
 
@@ -164,5 +180,4 @@ document.addEventListener("DOMContentLoaded", () => {
     chatList.scrollTop = 0;
   }
   scrollChatList();
-  console.log(users);
 });

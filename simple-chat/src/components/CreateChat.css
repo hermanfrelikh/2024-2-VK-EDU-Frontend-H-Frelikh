@@ -15,6 +15,13 @@
     margin: 30px;
     border: none;
     box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.icon-button-create:hover{
+  background-color: #4169E1;
+}
+.icon-button-create:active{
+  transform: scale(0.9);
 }
 #iconHeader {
   display: flex;
