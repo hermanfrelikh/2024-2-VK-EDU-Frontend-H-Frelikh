@@ -66,30 +66,37 @@ main {
   display: inline-block;
   align-self: flex-end;
 }
+.message-other * {
+  color: black;
+}
 .message-time {
   color: #8f8b8f;
   font-size: 10px;
   display: flex;
   justify-content: flex-start;
 }
-#done-all-chat{
-    color:white;
+#done-all-chat {
+  width: max-content;
+  margin-top: 10px;
+  font-size: 20px;
+  margin-left: 0px;
+  margin-bottom: 0px;
 }
+
 @media (max-width: 900px) {
 }
 @media (max-width: 600px) {
-  .messages{
+  .messages {
     margin-top: -55px;
     max-height: 785px;
   }
 }
 @media (max-width: 400px) {
-  .messages{
+  .messages {
     margin-top: -70px;
     max-height: 800px;
   }
 }
-
 
 header {
   background-color: #141214;
