@@ -1,6 +1,5 @@
 import "./FormIndex.css";
 
-
 export function FormIndex() {
   return `
     <form class="form" action="/">
@@ -15,3 +14,4 @@ export function FormIndex() {
     </form>
   `;
 }
+

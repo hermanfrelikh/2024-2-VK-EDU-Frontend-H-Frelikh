@@ -26,11 +26,10 @@ header {
   font-size: 30px;
   margin: 30px;
 }
-.icon:hover{
+.icon:hover {
   color: #8f8b8f;
-  
 }
-.icon:active{
+.icon:active {
   color: white;
   transform: scale(0.9);
 }
@@ -135,7 +134,7 @@ header {
   .icon {
     margin: 5px;
   }
-  
+
   .personNameStatus {
     margin-left: 10px;
   }

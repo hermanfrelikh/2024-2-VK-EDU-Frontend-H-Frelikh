@@ -71,10 +71,10 @@ body {
   display: flex;
   justify-content: center;
 }
-#cancellation-create-new-chat:hover{
+#cancellation-create-new-chat:hover {
   color: #8f8b8f;
 }
-#cancellation-create-new-chat:active{
+#cancellation-create-new-chat:active {
   color: white;
   transform: scale(0.9);
 }
@@ -146,3 +146,4 @@ body {
     font-size: 20px;
   }
 }
+

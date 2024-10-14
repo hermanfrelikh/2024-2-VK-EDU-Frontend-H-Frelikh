@@ -5,7 +5,6 @@ import { Chat } from "./components/Chat.js";
 import { ChatListComp } from "./components/ChatListComp.js";
 import { getUsers, saveUsers } from "./index.js";
 
-
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname === "/") {
     window.location.href = "main.html";
@@ -186,3 +185,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   scrollChatList();
 });
+

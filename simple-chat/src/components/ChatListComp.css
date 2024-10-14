@@ -1,11 +1,12 @@
 #chat-list {
-    margin-top: 150px;
-    list-style-type: none;
-    overflow-y: auto;
-    height: 800px;
-    padding-bottom: 20px;
-  }
-  .chatPerson {
-    background-color: #141214;
-    border-radius: 20px;
-  }
+  margin-top: 150px;
+  list-style-type: none;
+  overflow-y: auto;
+  height: 800px;
+  padding-bottom: 20px;
+}
+.chatPerson {
+  background-color: #141214;
+  border-radius: 20px;
+}
+

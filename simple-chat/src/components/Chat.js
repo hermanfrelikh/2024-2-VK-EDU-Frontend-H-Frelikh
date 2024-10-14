@@ -9,7 +9,7 @@ export function Chat(user) {
             <div class="chat-item-info">
               <div class="chat-item-name-time">
                 <h2 class="chat-item-name">${user.name}</h2>
-                <p class="chat-item-time">${"10:00"}</p>
+                <p class="chat-item-time">${user.lastMessageTime}</p>
               </div>
               <div class="chat-item-last-message-span">
                 <p class="last-message">${user.lastMessage || "Нет сообщений"}</p>
@@ -21,3 +21,4 @@ export function Chat(user) {
       </li>
     `;
 }
+

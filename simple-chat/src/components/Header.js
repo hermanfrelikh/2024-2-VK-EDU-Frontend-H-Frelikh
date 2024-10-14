@@ -1,6 +1,5 @@
 import "./Header.css";
 
-
 export function Header() {
   return `
     <header class="header">
@@ -28,3 +27,4 @@ export function Header() {
     </header>
   `;
 }
+

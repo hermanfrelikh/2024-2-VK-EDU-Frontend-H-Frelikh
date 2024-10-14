@@ -64,7 +64,7 @@ module.exports = {
     devServer: {
         static: BUILD_PATH,
         compress: true,
-        port: 9000,
+        port: 9001,
         open: 'main.html',
     }
     
