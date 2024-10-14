@@ -51,13 +51,16 @@ a{
     justify-content: center;
     align-content: center;
 }
+
 #done-all{
     width: max-content;
     margin-top: 15px;
     font-size: 20px;
     margin-left: 5px;
-    color:red;
 }
-#done-all-chat{
-    
+#done-all:hover{
+    color: white;
+}
+#done-all:active{
+    transform: scale(1.0);
 }
