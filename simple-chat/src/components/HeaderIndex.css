@@ -1,0 +1,145 @@
+header {
+  background-color: #141214;
+  height: 150px;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.headerContainer {
+  width: 33.3%;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+.linkMain {
+  color: white;
+}
+.icon {
+  font-size: 30px;
+  margin: 30px;
+}
+.icon:hover {
+  color: #8f8b8f;
+}
+.icon:active {
+  color: white;
+  transform: scale(0.9);
+}
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: white;
+}
+.headerIconsRight {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.person {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 25px;
+  left: 40%;
+}
+
+.personPhoto {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.personNameStatus {
+  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+}
+
+.personName {
+  font-size: 24px;
+  width: max-content;
+  margin-bottom: 8px;
+}
+
+.personStatus {
+  font-size: 16px;
+  color: #8f8b8f;
+}
+@media (max-width: 900px) {
+  .icon {
+    margin: 10px;
+  }
+  .personStatus {
+    font-size: 15px;
+  }
+  .personName {
+    font-size: 20px;
+  }
+  .person {
+    left: 35%;
+  }
+}
+@media (max-width: 600px) {
+  .personPhoto {
+    width: 70px;
+    height: 70px;
+  }
+  header {
+    height: 100px;
+  }
+  .person {
+    top: 15px;
+    left: 10%;
+  }
+  .icon {
+    font-size: 20px;
+  }
+  .personNameStatus {
+    margin-left: 10px;
+  }
+  .personName {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 400px) {
+  .personPhoto {
+    width: 50px;
+    height: 50px;
+  }
+  header {
+    height: 80px;
+  }
+  .person {
+    top: 15px;
+    left: 10%;
+  }
+  .icon {
+    margin: 5px;
+  }
+
+  .personNameStatus {
+    margin-left: 10px;
+  }
+  .personName {
+    margin-bottom: 0px;
+  }
+}
+

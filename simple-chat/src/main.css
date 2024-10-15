@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+body {
+  background-color: white;
+}
+.create-new-chat-form {
+  align-items: end;
+  height: 280px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+.create-new-chat {
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  width: 50%;
+  box-sizing: border-box;
+  height: 400px;
+  position: absolute;
+  top: 200px;
+  left: 25%;
+  padding: 20px;
+  z-index: 1100;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#form-input-name {
+  flex: 1;
+  background-color: #f0f0f0;
+  color: #000;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  margin-right: 10px;
+  height: 30px;
+  width: 70%;
+}
+#cancellation-create-new-chat {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 30px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+#cancellation-create-new-chat:hover {
+  color: #8f8b8f;
+}
+#cancellation-create-new-chat:active {
+  color: white;
+  transform: scale(0.9);
+}
+.new-user-info {
+  display: flex;
+  margin-top: 30px;
+}
+.new-user-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.new-user-name-time-conteiner {
+  margin-left: 20px;
+  align-self: center;
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  #chat-list {
+    margin-top: 150px;
+    height: 800px;
+  }
+  .create-new-chat {
+    height: 300px;
+    width: 70%;
+    left: 15%;
+  }
+}
+@media (min-width: 400px) and (max-width: 600px) {
+  #chat-list {
+    margin-top: 100px;
+    height: 900px;
+  }
+  .create-new-chat {
+    height: 400px;
+    width: 70%;
+    left: 15%;
+  }
+  .add-new-user-title {
+    font-size: 20px;
+  }
+  #form-input-name {
+    font-size: 10px;
+  }
+  #cancellation-create-new-chat {
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 400px) {
+  #chat-list {
+    margin-top: 80px;
+    height: 1000px;
+  }
+  #form-input-name {
+    font-size: 10px;
+  }
+  #cancellation-create-new-chat {
+    font-size: 10px;
+  }
+  #form-input-name {
+    font-size: 10px;
+  }
+  #cancellation-create-new-chat {
+    font-size: 10px;
+  }
+  .add-new-user-title {
+    font-size: 20px;
+  }
+}
+
