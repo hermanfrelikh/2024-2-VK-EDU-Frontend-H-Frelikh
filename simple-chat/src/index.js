@@ -141,14 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
       input.value = "";
       scrollToBottom();
 
-      if (messageText.length > 50) {
-        contact.lastMessage = messageText.slice(0, 50) + "...";
-      } else {
-        contact.lastMessage = messageText;
-      }
-      
-      contact.lastMessageTime = message.time;
-      saveUsers(users);
+      updateLastMessage(message);
     }
   }
 
@@ -185,9 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="message-text">${message.text}</p>
         <span id="done-all-chat" class="material-symbols-outlined icon">done_all</span>
       </div>
-      
+
       <p class="message-time">${message.time}</p>
-      
     `;
     messagesContainer.appendChild(messageElement);
   }
@@ -206,16 +198,30 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
       scrollToBottom();
-      const user = users.find((u) => u.id === contact.id);
-      if (user && messages.length > 0) {
-        user.lastMessage = messages[messages.length - 1].text;
-        saveUsers(users);
+
+  
+      if (messages.length > 0) {
+        updateLastMessage(messages[messages.length - 1]);
       }
     }
   }
 
   function scrollToBottom() {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function updateLastMessage(message) {
+    const currentContact = users.find((user) => user.id === contact.id);
+    if (currentContact) {
+      if (message.text.length > 50) {
+        currentContact.lastMessage = message.text.slice(0, 50) + "...";
+      } else {
+        currentContact.lastMessage = message.text;
+      }
+
+      currentContact.lastMessageTime = message.time;
+      saveUsers(users);
+    }
   }
 
   loadMessages();

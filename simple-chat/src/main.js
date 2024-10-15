@@ -135,6 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     "https://www.meme-arsenal.com/memes/4d37481e72c4770f4be10d89dbf0b2a8.jpg",
                   status: "недавно",
                   lastMessage: "Нет сообщений",
+                  lastMessageTime: "",
                 });
                 saveUsers(users);
                 const newUserId = users.length;
