@@ -421,7 +421,7 @@ main {
   word-wrap: break-word;
   overflow-wrap: break-word;
   display: inline-block;
-  align-self: flex-start;
+  align-self: flex-end;
   opacity: 0;
   animation: fadeIn 0.5s forwards;
 }
@@ -437,7 +437,7 @@ main {
   word-wrap: break-word;
   overflow-wrap: break-word;
   display: inline-block;
-  align-self: flex-end;
+  align-self: flex-start;
   opacity: 0;
   animation: fadeIn 0.5s forwards;
 }
