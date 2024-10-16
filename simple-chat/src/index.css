@@ -51,13 +51,9 @@ main {
   word-wrap: break-word;
   overflow-wrap: break-word;
   display: inline-block;
-  align-self: flex-start;
-  opacity: 0;
-  animation: fadeIn 0.5s forwards;
+  align-self: flex-end;
+
 }
-
-
-
 .message-other {
   color: black;
   background-color: white;
@@ -69,13 +65,17 @@ main {
   word-wrap: break-word;
   overflow-wrap: break-word;
   display: inline-block;
-  align-self: flex-end;
-  opacity: 0;
-  animation: fadeIn 0.5s forwards;
+  align-self: flex-start;
+  
 }
 .message-other * {
   color: black;
 }
+.new-message-animation{
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
 @keyframes fadeIn {
   to {
     opacity: 1;

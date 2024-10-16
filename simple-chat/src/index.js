@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem(`messages_${chatId}`, JSON.stringify(messages));
   }
 
-  function displayMessage(message) {
+  function displayMessage(message, isNew = false) {
     const messageElement = document.createElement("div");
     messageElement.classList.add(
       "message",
@@ -175,33 +175,60 @@ document.addEventListener("DOMContentLoaded", () => {
         <p class="message-text">${message.text}</p>
         <span id="done-all-chat" class="material-symbols-outlined icon">done_all</span>
       </div>
-
       <p class="message-time">${message.time}</p>
     `;
+  
+    
+    if (isNew) {
+      messageElement.classList.add("new-message-animation");
+      setTimeout(() => {
+        messageElement.classList.remove("new-message-animation");
+      }, 3000);
+    }
+  
     messagesContainer.appendChild(messageElement);
   }
-
+  
+  function handleSubmit(event) {
+    event.preventDefault();
+    const messageText = input.value;
+    if (messageText.trim() !== "") {
+      const message = {
+        id: Date.now(),
+        text: messageText,
+        time: new Date()
+          .toLocaleTimeString()
+          .slice(0, new Date().toLocaleTimeString().length - 3),
+        isMainAccountSender: account === mainAccount,
+      };
+      saveMessage(message);
+      displayMessage(message, true); 
+      input.value = "";
+      scrollToBottom();
+      updateLastMessage(message);
+    }
+  }
+  
   function loadMessages() {
     if (messagesContainer) {
       messagesContainer.innerHTML = "";
     }
-
+  
     if (contact) {
-      const messages =
-        JSON.parse(localStorage.getItem(`messages_${chatId}`)) || [];
+      const messages = JSON.parse(localStorage.getItem(`messages_${chatId}`)) || [];
       messages.forEach((message) => {
         if (!document.querySelector(`[data-id="${message.id}"]`)) {
-          displayMessage(message);
+          displayMessage(message); 
         }
       });
       scrollToBottom();
-
   
       if (messages.length > 0) {
         updateLastMessage(messages[messages.length - 1]);
       }
     }
   }
+  
 
   function scrollToBottom() {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
