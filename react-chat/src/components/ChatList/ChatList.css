@@ -1,0 +1,6 @@
+#chat-list {
+    list-style-type: none;
+    overflow-y: auto;
+    height: 800px;
+    padding-bottom: 20px;
+  }
