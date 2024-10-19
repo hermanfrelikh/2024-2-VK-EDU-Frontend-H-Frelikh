@@ -1,0 +1,20 @@
+#chat-list-item {
+  color: white;
+  background-color:  #141214;
+  margin: 20px 20px 0 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-radius: 20px;
+}
+#chat-list-item-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  justify-content: center;
+}
+#chat-list-item-info {
+  margin-left: 20px;
+}
