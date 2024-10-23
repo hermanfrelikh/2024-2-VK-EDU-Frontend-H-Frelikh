@@ -17,8 +17,20 @@ export const UsersProvider = ({ children }) => {
     localStorage.setItem("users", JSON.stringify(users));
   }, [users]);
 
+  const deleteUser = (userId) => {
+    setUsers(users.filter(user => user.id !== userId));
+  };
+
+  const updateLastMessage = (userId, message, time) => {
+    setUsers(prevUsers =>
+      prevUsers.map(user =>
+        user.id === userId ? { ...user, lastMessage: message, lastMessageTime: time } : user
+      )
+    );
+  };
+
   return (
-    <UsersContext.Provider value={{ users, setUsers }}>
+    <UsersContext.Provider value={{ users, setUsers, deleteUser, updateLastMessage }}>
       {children}
     </UsersContext.Provider>
   );
