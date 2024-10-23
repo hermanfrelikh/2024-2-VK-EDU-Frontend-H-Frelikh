@@ -2,8 +2,11 @@
   "name": "react-chat",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://hermanfrelikh.github.io/2024-2-VK-EDU-Frontend-H-Frelikh",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -29,6 +32,8 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.12",
     "globals": "^15.9.0",
-    "vite": "^5.4.8"
+    "vite": "^5.4.8",
+    "gh-pages": "^4.0.0"
   }
 }
+
