@@ -1,10 +1,14 @@
 import "./SearchUserInput.css";
 import React from "react";
 
-export default function SearchUserInput({ searchText, onSearchChange, stateSearchButton,setSearchText }) {
-  
-  if (stateSearchButton===false){
-    setSearchText("")
+export default function SearchUserInput({
+  searchText,
+  onSearchChange,
+  stateSearchButton,
+  setSearchText,
+}) {
+  if (stateSearchButton === false) {
+    setSearchText("");
   }
 
   return (
@@ -15,7 +19,8 @@ export default function SearchUserInput({ searchText, onSearchChange, stateSearc
       placeholder="Введите имя пользователя"
       autoComplete="off"
       value={searchText}
-      onChange={onSearchChange} 
+      onChange={onSearchChange}
     />
   );
 }
+

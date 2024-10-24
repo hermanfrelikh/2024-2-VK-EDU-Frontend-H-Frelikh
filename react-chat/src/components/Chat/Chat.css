@@ -34,31 +34,30 @@
   display: inline-block;
   align-self: flex-start;
 }
-.message{
-    box-sizing: border-box;
-    max-width: 30%;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+.message {
+  box-sizing: border-box;
+  max-width: 30%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
-.text-message{
+.text-message {
   box-sizing: border-box;
   display: flex;
   font-size: 14px;
   word-wrap: break-word;
-  white-space: normal; 
+  white-space: normal;
   overflow-wrap: break-word;
 }
-.done-all-icon-message{
+.done-all-icon-message {
   box-sizing: border-box;
   display: flex;
   align-items: flex-end;
   margin-left: 2px;
 }
-.time-done-all-icon-message{
+.time-done-all-icon-message {
   display: flex;
-
 }
-.time-message{
+.time-message {
   box-sizing: border-box;
   display: flex;
   justify-content: flex-end;
@@ -66,3 +65,4 @@
   font-size: 12px;
   margin-top: 2px;
 }
+

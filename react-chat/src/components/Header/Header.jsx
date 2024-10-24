@@ -14,7 +14,7 @@ export default function Header({
   isChatOpen,
   onBack,
   selectedUser,
-  onSwitchUser, 
+  onSwitchUser,
 }) {
   const [stateSearchButton, setStateSearchButton] = useState(false);
 
@@ -56,7 +56,7 @@ export default function Header({
       <div id="header-section" className="header-right-section">
         {isChatOpen ? (
           <div>
-            <LoopIcon id="header-icon" onClick={onSwitchUser} /> 
+            <LoopIcon id="header-icon" onClick={onSwitchUser} />
             <MoreVertIcon id="header-icon" />
             <SearchIcon id="header-icon" />
           </div>
@@ -79,3 +79,4 @@ export default function Header({
     </header>
   );
 }
+

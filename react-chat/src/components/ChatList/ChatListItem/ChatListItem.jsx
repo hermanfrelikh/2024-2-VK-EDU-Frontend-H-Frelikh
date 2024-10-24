@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ChatListItem.css";
 import ClearIcon from "@mui/icons-material/Clear";
-import DoneAllIcon from '@mui/icons-material/DoneAll';
+import DoneAllIcon from "@mui/icons-material/DoneAll";
 
 export default function ChatListItem({
   avatar,
@@ -11,7 +11,7 @@ export default function ChatListItem({
   lastMessageTime,
   id,
   deleteUser,
-  onClick
+  onClick,
 }) {
   const handleDeleteChat = (e) => {
     e.stopPropagation();
@@ -20,7 +20,7 @@ export default function ChatListItem({
 
   const truncateMessage = (message, maxLength) => {
     if (message.length > maxLength) {
-      return message.slice(0, maxLength) + '...';
+      return message.slice(0, maxLength) + "...";
     }
     return message;
   };
@@ -30,7 +30,12 @@ export default function ChatListItem({
   return (
     <li id="chat-list-item" onClick={() => onClick(id)}>
       <div id="chat-list-item-info-avatar">
-        <img style={{width: "80px", height: "80px"}} src={avatar} alt={name} id="chat-list-item-avatar" />
+        <img
+          style={{ width: "80px", height: "80px" }}
+          src={avatar}
+          alt={name}
+          id="chat-list-item-avatar"
+        />
         <div id="chat-list-item-info">
           <h2>{name}</h2>
           <p id="last-message-time-chat-list-item">{lastMessageTime}</p>
@@ -45,3 +50,4 @@ export default function ChatListItem({
     </li>
   );
 }
+

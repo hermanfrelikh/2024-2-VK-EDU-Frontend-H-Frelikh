@@ -46,16 +46,16 @@
   -moz-appearance: none;
   appearance: none;
   display: flex;
-  transition: color 0.15s ease-in-out,transform 0.4s ease-in-out;
+  transition: color 0.15s ease-in-out, transform 0.4s ease-in-out;
 }
-#delete-chat:hover{
+#delete-chat:hover {
   color: #8f8b8f;
 }
-#delete-chat:active{
+#delete-chat:active {
   transform: scale(0.75);
 }
 
-
-#last-message-time-chat-list-item{
+#last-message-time-chat-list-item {
   color: #8f8b8f;
 }
+

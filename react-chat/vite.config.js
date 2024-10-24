@@ -6,3 +6,4 @@ export default defineConfig({
   plugins: [react()],
   base: '2024-2-VK-EDU-Frontend-H-Frelikh'
 })
+

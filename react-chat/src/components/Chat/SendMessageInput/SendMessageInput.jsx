@@ -1,6 +1,10 @@
 import "./SendMessageInput.css";
 
-export default function SendMessageInput({handleSendMessage, setMessage, message}) {
+export default function SendMessageInput({
+  handleSendMessage,
+  setMessage,
+  message,
+}) {
   return (
     <form id="send-message-form" onSubmit={handleSendMessage}>
       <input
@@ -18,3 +22,4 @@ export default function SendMessageInput({handleSendMessage, setMessage, message
     </form>
   );
 }
+

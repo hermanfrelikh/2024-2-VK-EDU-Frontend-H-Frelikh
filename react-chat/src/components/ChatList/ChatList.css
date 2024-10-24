@@ -1,11 +1,12 @@
 #chat-list {
-    list-style-type: none;
-    overflow-y: auto;
-    height: 800px;
-    padding-bottom: 20px;
-  }
-#chat-list-title{
+  list-style-type: none;
+  overflow-y: auto;
+  height: 800px;
+  padding-bottom: 20px;
+}
+#chat-list-title {
   padding-top: 20px;
   display: flex;
   justify-content: center;
 }
+

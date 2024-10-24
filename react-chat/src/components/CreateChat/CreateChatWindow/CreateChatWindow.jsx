@@ -3,7 +3,10 @@ import { useState } from "react";
 import NewChat from "../NewChat/NewChat";
 import { useUsers } from "../../../context/UsersContext";
 
-export default function CreateChatWindow({setStateCreateChatButton, stateCreateChatButton}) {
+export default function CreateChatWindow({
+  setStateCreateChatButton,
+  stateCreateChatButton,
+}) {
   const [newUserName, setNewUserName] = useState("");
 
   function clickСancellationButton(event) {
@@ -12,7 +15,7 @@ export default function CreateChatWindow({setStateCreateChatButton, stateCreateC
   }
 
   function handleKeyDown(event) {
-    if (event.key === 'Enter' && newUserName !== "") {
+    if (event.key === "Enter" && newUserName !== "") {
       event.preventDefault();
       addNewUsers(newUserName);
       setNewUserName("");
@@ -31,7 +34,7 @@ export default function CreateChatWindow({setStateCreateChatButton, stateCreateC
       lastMessageTime: "",
     };
 
-    setUsers(prevUsers => {
+    setUsers((prevUsers) => {
       const updatedUsers = [...prevUsers, newUser];
       return updatedUsers;
     });
@@ -53,7 +56,9 @@ export default function CreateChatWindow({setStateCreateChatButton, stateCreateC
       {stateCreateChatButton === true && (
         <div id="create-new-chat">
           <h1 id="add-new-user-title">Написать сообщение</h1>
-          {newUserName !== "" && <NewChat addNewUsers={addNewUsers} userName={newUserName} />}
+          {newUserName !== "" && (
+            <NewChat addNewUsers={addNewUsers} userName={newUserName} />
+          )}
 
           <form id="create-new-chat-form" action="/">
             <input
@@ -78,3 +83,4 @@ export default function CreateChatWindow({setStateCreateChatButton, stateCreateC
     </>
   );
 }
+

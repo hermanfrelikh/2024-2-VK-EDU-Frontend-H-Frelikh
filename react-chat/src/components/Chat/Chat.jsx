@@ -3,8 +3,8 @@ import "./Chat.css";
 import SendMessageInput from "./SendMessageInput/SendMessageInput";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import { useUsers } from "../../context/UsersContext";
-import { mainAccount } from "../../data"; 
-import Header from "../Header/Header"; 
+import { mainAccount } from "../../data";
+import Header from "../Header/Header";
 
 export default function Chat({ user, onBack }) {
   const [message, setMessage] = useState("");
@@ -51,14 +51,16 @@ export default function Chat({ user, onBack }) {
         isChatOpen={true}
         onBack={onBack}
         selectedUser={currentUser}
-        onSwitchUser={handleSwitchUser} 
+        onSwitchUser={handleSwitchUser}
       />
       <div className="chat-messages">
         {messages.map((msg) => (
           <div
             key={msg.id}
             className={`message ${
-              msg.sender === (currentUser.id === user.id ? "self" : "other") ? "message-self" : "message-other"
+              msg.sender === (currentUser.id === user.id ? "self" : "other")
+                ? "message-self"
+                : "message-other"
             }`}
           >
             <div className="text-message">{msg.text}</div>
@@ -84,3 +86,4 @@ export default function Chat({ user, onBack }) {
     </div>
   );
 }
+

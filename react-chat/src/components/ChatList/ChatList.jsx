@@ -6,9 +6,11 @@ import { useUsers } from "../../context/UsersContext";
 export default function ChatList({ searchText, onChatItemClick }) {
   const { users, deleteUser } = useUsers();
 
-  const filteredUsers = users.filter((user) =>
-    user.name.toLowerCase().includes(searchText.toLowerCase())
-  ).reverse();
+  const filteredUsers = users
+    .filter((user) =>
+      user.name.toLowerCase().includes(searchText.toLowerCase())
+    )
+    .reverse();
 
   const ChatListItems = filteredUsers.map((user) => (
     <ChatListItem
@@ -35,3 +37,4 @@ export default function ChatList({ searchText, onChatItemClick }) {
     </ul>
   );
 }
+

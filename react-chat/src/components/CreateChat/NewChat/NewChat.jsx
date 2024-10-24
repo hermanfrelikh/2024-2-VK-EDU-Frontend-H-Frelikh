@@ -1,8 +1,6 @@
 import "./NewChat.css";
 
 export default function NewChat({ addNewUsers, userName }) {
-
-  
   return (
     <div onClick={() => addNewUsers(userName)} id="new-chat">
       <img
@@ -17,3 +15,4 @@ export default function NewChat({ addNewUsers, userName }) {
     </div>
   );
 }
+
