@@ -55,7 +55,7 @@ export default function Header({
       </div>
       <div id="header-section" className="header-right-section">
         {isChatOpen ? (
-          <div>
+          <div id="header-chat-icons-right">
             <LoopIcon id="header-icon" onClick={onSwitchUser} />
             <MoreVertIcon id="header-icon" />
             <SearchIcon id="header-icon" />

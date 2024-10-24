@@ -14,6 +14,7 @@ export default function Chat({ user, onBack }) {
   });
 
   const [currentUser, setCurrentUser] = useState(user);
+  const [newMessageId, setNewMessageId] = useState(null);
 
   const { updateLastMessage } = useUsers();
 
@@ -34,6 +35,7 @@ export default function Chat({ user, onBack }) {
       };
       setMessages([...messages, newMessage]);
       setMessage("");
+      setNewMessageId(newMessage.id);
 
       updateLastMessage(user.id, newMessage.text, newMessage.time);
     }
@@ -61,7 +63,7 @@ export default function Chat({ user, onBack }) {
               msg.sender === (currentUser.id === user.id ? "self" : "other")
                 ? "message-self"
                 : "message-other"
-            }`}
+            } ${newMessageId === msg.id ? "new-message-animation" : ""}`}
           >
             <div className="text-message">{msg.text}</div>
             <div className="time-done-all-icon-message">

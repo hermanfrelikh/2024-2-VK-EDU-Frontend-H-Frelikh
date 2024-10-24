@@ -4,7 +4,7 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  max-height: 730px;
+  max-height: 750px;
   width: 100%;
 }
 
@@ -39,7 +39,19 @@
   max-width: 30%;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  word-break: break-all;
 }
+.new-message-animation {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
 .text-message {
   box-sizing: border-box;
   display: flex;
@@ -64,5 +76,20 @@
   color: #8f8b8f;
   font-size: 12px;
   margin-top: 2px;
+}
+@media (max-width: 900px) {
+  
+}
+
+@media (max-width: 600px) {
+  .chat-messages {
+    max-height: 803px;
+  }
+  
+}
+@media (max-width: 400px) {
+  .chat-messages {
+    max-height: 805px;
+  }
 }
 

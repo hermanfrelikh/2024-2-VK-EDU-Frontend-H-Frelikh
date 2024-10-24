@@ -57,5 +57,15 @@
 
 #last-message-time-chat-list-item {
   color: #8f8b8f;
+  font-size: 14px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+@media (max-width: 900px) {
+}
+@media (max-width: 600px) {
+  
+}
+@media (max-width: 400px) {
 }
 

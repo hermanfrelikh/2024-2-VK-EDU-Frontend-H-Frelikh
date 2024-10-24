@@ -25,7 +25,7 @@ export default function ChatListItem({
     return message;
   };
 
-  const truncatedLastMessage = truncateMessage(lastMessage, 60);
+  const truncatedLastMessage = truncateMessage(lastMessage, 50);
 
   return (
     <li id="chat-list-item" onClick={() => onClick(id)}>

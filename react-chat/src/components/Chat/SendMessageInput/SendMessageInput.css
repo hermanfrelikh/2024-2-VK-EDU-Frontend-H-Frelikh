@@ -38,4 +38,24 @@
 #send-message-button:active {
   transform: scale(0.9);
 }
+@media (max-width: 900px) {
+  
+}
+
+@media (max-width: 600px) {
+  #send-message-input {
+    font-size: 14px;
+  }
+  #send-message-button {
+    font-size: 14px;
+  }
+}
+@media (max-width: 400px) {
+  #send-message-input {
+    font-size: 12px;
+  }
+  #send-message-button {
+    font-size: 12px;
+  }
+}
 

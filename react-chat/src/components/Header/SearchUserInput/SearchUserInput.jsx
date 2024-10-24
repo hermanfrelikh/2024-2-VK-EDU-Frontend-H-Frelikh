@@ -13,10 +13,10 @@ export default function SearchUserInput({
 
   return (
     <input
-      id="new-user-name-input"
+      id="search-user-name-input"
       type="text"
       name="message-text"
-      placeholder="Введите имя пользователя"
+      placeholder="Поиск"
       autoComplete="off"
       value={searchText}
       onChange={onSearchChange}

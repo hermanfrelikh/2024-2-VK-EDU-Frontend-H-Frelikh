@@ -1,5 +1,4 @@
-#new-user-name-input {
-  flex: 1;
+#search-user-name-input {
   background-color: #f0f0f0;
   color: #000;
   border: 1px solid #ccc;
@@ -10,5 +9,22 @@
   margin-right: 10px;
   height: 30px;
   width: 70%;
+}
+
+@media (max-width: 900px) {
+  #search-user-name-input {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  #search-user-name-input {
+    margin-right: 0;
+    font-size: 14px;
+    height: 25px;
+    width: 50%;
+  }
+}
+@media (max-width: 400px) {
 }
 
