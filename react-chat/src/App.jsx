@@ -5,26 +5,27 @@ import CreateChatButton from "./components/CreateChat/CreateChatButton/CreateCha
 import { UsersProvider, useUsers } from "./context/UsersContext";
 import { useState } from "react";
 import Chat from "./components/Chat/Chat";
+import { MainAccountProvider } from "./context/MainAccountContext";
 
 function AppContent() {
   const [searchText, setSearchText] = useState("");
   const [selectedUser, setSelectedUser] = useState(null);
-  const [isChatOpen, setIsChatOpen] = useState(false); 
-  const { users } = useUsers(); 
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const { users } = useUsers();
 
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
   };
 
   const handleChatItemClick = (userId) => {
-    const user = users.find(u => u.id === userId);
+    const user = users.find((u) => u.id === userId);
     setSelectedUser(user);
-    setIsChatOpen(true); 
+    setIsChatOpen(true);
   };
 
   const handleBack = () => {
     setSelectedUser(null);
-    setIsChatOpen(false); 
+    setIsChatOpen(false);
   };
 
   return (
@@ -55,8 +56,9 @@ function AppContent() {
 export default function App() {
   return (
     <UsersProvider>
-      <AppContent />
+      <MainAccountProvider>
+        <AppContent />
+      </MainAccountProvider>
     </UsersProvider>
   );
 }
-

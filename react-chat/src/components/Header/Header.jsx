@@ -6,6 +6,10 @@ import SearchUserInput from "./SearchUserInput/SearchUserInput";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import LoopIcon from "@mui/icons-material/Loop";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Menu from "./Menu/Menu";
+import EditProfile from "./Menu/EditProfile/EditProfile";
+import CheckIcon from '@mui/icons-material/Check';
+import { useMainAccount } from "../../context/MainAccountContext";
 
 export default function Header({
   searchText,
@@ -16,7 +20,19 @@ export default function Header({
   selectedUser,
   onSwitchUser,
 }) {
+  const [stateEditProfile, setStateEditProfile] = useState(false);
+  const { mainAccount, setMainAccount } = useMainAccount();
+
+  function clickBackButtonMenu() {
+    setStateEditProfile(false);
+  }
+
   const [stateSearchButton, setStateSearchButton] = useState(false);
+  const [stateMenu, setStateMenu] = useState(false);
+
+  function clickMenuButton() {
+    setStateMenu(!stateMenu);
+  }
 
   function clickSearchButton() {
     setStateSearchButton(!stateSearchButton);
@@ -25,6 +41,8 @@ export default function Header({
     }
   }
 
+  const { saveMainAccount } = useMainAccount();
+
   return (
     <header>
       <div id="header-section" className="header-left-section">
@@ -32,9 +50,24 @@ export default function Header({
           <button onClick={onBack} id="header-back-button">
             <ArrowBackIcon id="header-icon" />
           </button>
+        ) : stateEditProfile ? (
+          <button onClick={clickBackButtonMenu} className="header-button">
+            <ArrowBackIcon id="header-icon" />
+          </button>
         ) : (
-          <MenuIcon id="header-icon" />
+          <button onClick={clickMenuButton} className="header-button">
+            <MenuIcon id="header-icon" />
+          </button>
         )}
+        {stateMenu && (
+          <Menu
+            setStateMenu={setStateMenu}
+            stateEditProfile={stateEditProfile}
+            setStateEditProfile={setStateEditProfile}
+            
+          />
+        )}
+        {stateEditProfile && <EditProfile mainAccount={mainAccount} setMainAccount={setMainAccount} />}
       </div>
       <div id="header-section" className="header-central-section">
         {isChatOpen ? (
@@ -49,6 +82,8 @@ export default function Header({
               <p id="person-status">{selectedUser.status}</p>
             </div>
           </div>
+        ) : stateEditProfile ? (
+          <h1 id="messenger-name">Edit Profile</h1>
         ) : (
           <h1 id="messenger-name">Messenger</h1>
         )}
@@ -70,13 +105,20 @@ export default function Header({
                 setSearchText={setSearchText}
               />
             )}
-            <button onClick={clickSearchButton} id="search-user-button">
-              <SearchIcon id="header-icon" />
-            </button>
+            {stateEditProfile === false && (
+              <button onClick={clickSearchButton} className="header-button">
+                <SearchIcon id="header-icon" />
+              </button>
+            )}
+            {stateEditProfile === true && (
+              <button onClick={saveMainAccount} className="header-button">
+                <CheckIcon id="header-icon" />
+              </button>
+            )}
+
           </>
         )}
       </div>
     </header>
   );
 }
-

@@ -35,7 +35,7 @@ header {
 #messenger-name {
   font-size: 36px;
 }
-#search-user-button {
+.header-button {
   background: none;
   border: none;
   padding: 0;

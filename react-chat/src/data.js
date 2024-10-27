@@ -6,6 +6,14 @@ function saveUsers(users) {
   localStorage.setItem("users", JSON.stringify(users));
 }
 
+function getMainAccount() {
+  return JSON.parse(localStorage.getItem("mainAccount")) || mainAccount;
+}
+
+function saveMainAccount(account) {
+  localStorage.setItem("mainAccount", JSON.stringify(account));
+}
+
 const initialUsers = [
   {
     id: 1,
@@ -32,13 +40,17 @@ const initialUsers = [
     lastMessageTime: "",
   },
 ];
+
 const mainAccount = {
   id: "german",
   name: "Герман",
+  username: "@prodbyagny",
+  bio: "Привет, я Герман!",
   avatar: "/herman.jpg",
   status: "онлайн",
   lastMessage: "Нет сообщений",
   lastMessageTime: "",
 };
-export { getUsers, saveUsers, initialUsers, mainAccount };
+
+export { getUsers, saveUsers, initialUsers, mainAccount, getMainAccount, saveMainAccount };
 
