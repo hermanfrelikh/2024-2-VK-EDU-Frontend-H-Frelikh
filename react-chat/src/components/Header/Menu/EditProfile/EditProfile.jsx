@@ -40,7 +40,7 @@ export default function EditProfile({ onInputChange }) {
   };
 
   const handlePhotoChange = () => {
-    onInputChange('photo', 'changed'); // Уведомляем о изменении фото
+    onInputChange('photo', 'changed');
   };
 
   return (
