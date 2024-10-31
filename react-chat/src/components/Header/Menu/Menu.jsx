@@ -1,13 +1,17 @@
 import "./Menu.css";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function Menu({
   setStateMenu,
   stateEditProfile,
   setStateEditProfile
 }) {
+  const navigate = useNavigate();
+
   function clickEditProfile() {
-    setStateEditProfile(true);
     setStateMenu(false);
+    navigate('/edit/profile');
   }
 
   return (

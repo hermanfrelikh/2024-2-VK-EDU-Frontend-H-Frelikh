@@ -1,11 +1,12 @@
 import "./NewChat.css";
+import { getImagePath } from "../../../data";
 
 export default function NewChat({ addNewUsers, userName }) {
   return (
     <div onClick={() => addNewUsers(userName)} id="new-chat">
       <img
         id="new-user-avatar"
-        src="../../public/no-avatar-user.jpg"
+        src={getImagePath("no-avatar-user.jpg")}
         alt="user-avatar"
       />
       <div className="new-chat-info">

@@ -7,9 +7,9 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import LoopIcon from "@mui/icons-material/Loop";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Menu from "./Menu/Menu";
-import EditProfile from "./Menu/EditProfile/EditProfile";
 import CheckIcon from '@mui/icons-material/Check';
 import { useMainAccount } from "../../context/MainAccountContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Header({
   searchText,
@@ -19,16 +19,14 @@ export default function Header({
   onBack,
   selectedUser,
   onSwitchUser,
+  isProfileEdit,
+  showEditButtons,
+  onSave
 }) {
-  const [stateEditProfile, setStateEditProfile] = useState(false);
-  const { mainAccount, setMainAccount } = useMainAccount();
-
-  function clickBackButtonMenu() {
-    setStateEditProfile(false);
-  }
-
   const [stateSearchButton, setStateSearchButton] = useState(false);
   const [stateMenu, setStateMenu] = useState(false);
+  const [showSaveMessage, setShowSaveMessage] = useState(false);
+  const navigate = useNavigate();
 
   function clickMenuButton() {
     setStateMenu(!stateMenu);
@@ -41,20 +39,23 @@ export default function Header({
     }
   }
 
-  const { saveMainAccount } = useMainAccount();
+  const handleSave = () => {
+    onSave();
+    setShowSaveMessage(true);
+    setTimeout(() => {
+      setShowSaveMessage(false);
+    }, 2000);
+  };
 
   return (
     <header>
       <div id="header-section" className="header-left-section">
-        {isChatOpen ? (
-          <button onClick={onBack} id="header-back-button">
+        {(isChatOpen || isProfileEdit) && (
+          <button onClick={onBack} id="header-back-button" className="fade-in">
             <ArrowBackIcon id="header-icon" />
           </button>
-        ) : stateEditProfile ? (
-          <button onClick={clickBackButtonMenu} className="header-button">
-            <ArrowBackIcon id="header-icon" />
-          </button>
-        ) : (
+        )}
+        {!isProfileEdit && !isChatOpen && (
           <button onClick={clickMenuButton} className="header-button">
             <MenuIcon id="header-icon" />
           </button>
@@ -62,12 +63,8 @@ export default function Header({
         {stateMenu && (
           <Menu
             setStateMenu={setStateMenu}
-            stateEditProfile={stateEditProfile}
-            setStateEditProfile={setStateEditProfile}
-            
           />
         )}
-        {stateEditProfile && <EditProfile mainAccount={mainAccount} setMainAccount={setMainAccount} />}
       </div>
       <div id="header-section" className="header-central-section">
         {isChatOpen ? (
@@ -82,8 +79,11 @@ export default function Header({
               <p id="person-status">{selectedUser.status}</p>
             </div>
           </div>
-        ) : stateEditProfile ? (
-          <h1 id="messenger-name">Edit Profile</h1>
+        ) : isProfileEdit ? (
+          <div className="edit-profile-title">
+            <h1 id="messenger-name">Edit Profile</h1>
+            {showSaveMessage && <p className="save-message fade-in">Изменения сохранены</p>}
+          </div>
         ) : (
           <h1 id="messenger-name">Messenger</h1>
         )}
@@ -95,9 +95,13 @@ export default function Header({
             <MoreVertIcon id="header-icon" />
             <SearchIcon id="header-icon" />
           </div>
-        ) : (
-          <>
-            {stateSearchButton === true && (
+        ) : isProfileEdit && showEditButtons ? (
+          <button onClick={handleSave} className="header-button fade-in">
+            <CheckIcon id="header-icon" />
+          </button>
+        ) : !isProfileEdit && (
+          <div className="search-container">
+            {stateSearchButton && (
               <SearchUserInput
                 searchText={searchText}
                 onSearchChange={onSearchChange}
@@ -105,18 +109,10 @@ export default function Header({
                 setSearchText={setSearchText}
               />
             )}
-            {stateEditProfile === false && (
-              <button onClick={clickSearchButton} className="header-button">
-                <SearchIcon id="header-icon" />
-              </button>
-            )}
-            {stateEditProfile === true && (
-              <button onClick={saveMainAccount} className="header-button">
-                <CheckIcon id="header-icon" />
-              </button>
-            )}
-
-          </>
+            <button onClick={clickSearchButton} className="header-button">
+              <SearchIcon id="header-icon" />
+            </button>
+          </div>
         )}
       </div>
     </header>

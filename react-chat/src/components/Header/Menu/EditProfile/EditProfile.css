@@ -1,19 +1,21 @@
+.edit-profile-page {
+  height: calc(100vh - 54px);
+  background: #F4F4F5;
+  padding: 20px 16px;
+}
+
+.edit-profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
 #edit-profile {
-  position: fixed;
-  top: 150px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: white;
-  z-index: 1000;
-  overflow-y: auto;
-  color: black;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-@media (max-width: 600px) {
-  #edit-profile {
-    top: 100px;
-  }
+  background: #FFFFFF;
+  padding: 0;
 }

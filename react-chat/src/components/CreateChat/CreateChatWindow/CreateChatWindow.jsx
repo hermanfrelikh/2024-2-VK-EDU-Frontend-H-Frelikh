@@ -2,6 +2,7 @@ import "./CreateChatWindow.css";
 import { useState } from "react";
 import NewChat from "../NewChat/NewChat";
 import { useUsers } from "../../../context/UsersContext";
+import { getImagePath } from "../../../data";
 
 export default function CreateChatWindow({
   setStateCreateChatButton,
@@ -28,7 +29,7 @@ export default function CreateChatWindow({
     const newUser = {
       id: Date.now(),
       name: newUserName,
-      avatar: "/no-avatar-user.jpg",
+      avatar: getImagePath("no-avatar-user.jpg"),
       status: "недавно",
       lastMessage: "Нет сообщений",
       lastMessageTime: "",
