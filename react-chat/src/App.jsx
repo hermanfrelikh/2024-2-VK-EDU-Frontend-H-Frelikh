@@ -5,27 +5,18 @@ import CreateChatButton from "./components/CreateChat/CreateChatButton/CreateCha
 import { UsersProvider, useUsers } from "./context/UsersContext";
 import { useState } from "react";
 import Chat from "./components/Chat/Chat";
-import {
-  MainAccountProvider,
-  useMainAccount,
-} from "./context/MainAccountContext";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { MainAccountProvider, useMainAccount } from "./context/MainAccountContext";
+import { Routes, Route, useNavigate, useParams } from "react-router-dom";
 import EditProfile from "./components/Header/Menu/EditProfile/EditProfile";
 
 function ChatView() {
   const { chatId } = useParams();
   const { users } = useUsers();
   const navigate = useNavigate();
-  const user = users.find((u) => u.id === Number(chatId));
-
+  const user = users.find(u => u.id === Number(chatId));
+  
   const handleBack = () => {
-    navigate("/");
+    navigate('/');
   };
 
   if (!user) return <div>Чат не найден</div>;
@@ -37,33 +28,30 @@ function ProfileRoute() {
   const navigate = useNavigate();
   const { mainAccount, setMainAccount, saveMainAccount } = useMainAccount();
   const [isEdited, setIsEdited] = useState(false);
-  const [tempAccount, setTempAccount] = useState({ ...mainAccount });
+  const [tempAccount, setTempAccount] = useState({...mainAccount});
 
   const handleBack = () => {
     setMainAccount(tempAccount);
-    navigate("/");
+    navigate('/');
   };
 
   const handleSave = () => {
     if (!mainAccount.name.trim()) {
       return;
     }
-
-    if (
-      !mainAccount.username.startsWith("@") ||
-      mainAccount.username.length < 6
-    ) {
+    
+    if (!mainAccount.username.startsWith('@') || mainAccount.username.length < 6) {
       return;
     }
 
     saveMainAccount();
-    setTempAccount({ ...mainAccount });
+    setTempAccount({...mainAccount});
     setIsEdited(false);
   };
 
   const handleInputChange = (type, value) => {
     setIsEdited(true);
-    setMainAccount((prev) => ({
+    setMainAccount(prev => ({
       ...prev,
       [type]: value,
     }));
@@ -71,13 +59,15 @@ function ProfileRoute() {
 
   return (
     <>
-      <Header
+      <Header 
         isProfileEdit={true}
         showEditButtons={isEdited}
         onBack={handleBack}
         onSave={handleSave}
       />
-      <EditProfile onInputChange={handleInputChange} />
+      <EditProfile 
+        onInputChange={handleInputChange}
+      />
     </>
   );
 }
@@ -95,7 +85,7 @@ function AppContent() {
   };
 
   return (
-    <Routes>
+    <Routes basename="/chat-app-client">
       <Route
         path="/"
         element={
@@ -115,7 +105,10 @@ function AppContent() {
         }
       />
       <Route path="/chat/:chatId" element={<ChatView />} />
-      <Route path="/edit/profile" element={<ProfileRoute />} />
+      <Route 
+        path="/edit/profile" 
+        element={<ProfileRoute />} 
+      />
     </Routes>
   );
 }
@@ -124,11 +117,8 @@ export default function App() {
   return (
     <UsersProvider>
       <MainAccountProvider>
-        <Router basename="/2024-2-VK-EDU-Frontend-H-Frelikh">
-          <AppContent />
-        </Router>
+        <AppContent />
       </MainAccountProvider>
     </UsersProvider>
   );
 }
-

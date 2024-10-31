@@ -2,6 +2,7 @@
   height: calc(100vh - 54px);
   background: #F4F4F5;
   padding: 20px 16px;
+  overflow-y: auto;
 }
 
 .edit-profile-container {
