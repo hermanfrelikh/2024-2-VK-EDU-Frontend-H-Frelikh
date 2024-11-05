@@ -5,6 +5,7 @@ import DoneAllIcon from "@mui/icons-material/DoneAll";
 import { useUsers } from "../../context/UsersContext";
 import { mainAccount } from "../../data";
 import Header from "../Header/Header";
+import { useMainAccount } from "../../context/MainAccountContext";
 
 export default function Chat({ user, onBack }) {
   const [message, setMessage] = useState("");
@@ -17,6 +18,7 @@ export default function Chat({ user, onBack }) {
   const [newMessageId, setNewMessageId] = useState(null);
 
   const { updateLastMessage } = useUsers();
+  const { mainAccount } = useMainAccount();
 
   useEffect(() => {
     localStorage.setItem(`chat_${user.id}`, JSON.stringify(messages));

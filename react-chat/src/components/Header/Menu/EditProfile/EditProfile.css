@@ -1,0 +1,27 @@
+.edit-profile-page {
+  height: calc(100vh - 54px); 
+  background: #F4F4F5;
+  padding: 20px 16px;
+  overflow-y: auto; 
+  box-sizing: border-box; 
+  padding-bottom: 100px;
+}
+
+.edit-profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  max-height: calc(100vh - 114px); 
+  overflow-y: auto; 
+  box-sizing: border-box;
+}
+
+#edit-profile {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  padding: 0;
+}
